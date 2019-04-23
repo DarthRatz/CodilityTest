@@ -5,14 +5,15 @@ import java.util.*;
 public class HelloWorld {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String s = "00:01:32,400-234-090\n00:05:01,701-080-080\n00:05:00,643-777-213";
 		String s2 ="00:01:07,400-234-090\n00:05:01,701-080-080\n00:05:00,400-234-090";
-		
+				
 		int result = solution(s);
+		System.out.println(s);
 		System.out.println(result);
 		
 		result = solution(s2);
+		System.out.println(s2);
 		System.out.println(result);
 	}
 	
@@ -24,16 +25,16 @@ public class HelloWorld {
 		String[] data = S.split("\n");
 		
 		for (int i=0; i < data.length; i++) {
-			String[] phone = data[i].split(",");
+			String[] line = data[i].split(",");
 			
 			int callDuration = 0;
 			
-			String phoneNumber = phone[1];
+			String phoneNumber = line[1];
 			if (listOfPhoneNumbers.containsKey(phoneNumber)) {
 				callDuration += listOfPhoneNumbers.get(phoneNumber);
 			}
 			
-			String[] timeOfCall = phone[0].split(":");			
+			String[] timeOfCall = line[0].split(":");			
 			callDuration += Integer.parseInt(timeOfCall[0])*60*60;
 			callDuration += Integer.parseInt(timeOfCall[1])*60;
 			callDuration += Integer.parseInt(timeOfCall[2]);
